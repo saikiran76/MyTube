@@ -1,16 +1,59 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { useState } from "react";
 import { IoMoon } from "react-icons/io5";
 import { IoSunny } from "react-icons/io5";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toogleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
 import SideBar from "./SideBar";
+import { SEARCH_API, YTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
+
+import { CiSearch } from "react-icons/ci";
 // import UilReact from '@iconscout/react-unicons/icons/uil-react'
 
 
 const Header = () =>{
     const [dark, setDark] = React.useState(false);
+    const [query, setQuery] = useState("");
+    const [suggestions, setSuggestions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    
+
+    const cacheMemory = useSelector(state => state.search);
+
+    useEffect(()=>{
+        const timer = setTimeout(()=>{
+            if(cacheMemory[query]){
+                setSuggestions(cacheMemory[query])
+            }else{
+                getSuggestions()
+            }
+        }, 200)
+        
+        // make an api call after 200ms
+
+        return()=>{
+            clearTimeout(timer);
+        }
+
+    },[query])
+
     const dispatch = useDispatch();
+
+    const getSuggestions = async() =>{
+        console.log('Api call' + query);
+        const data = await fetch(SEARCH_API +  query);
+        const json = await data.json();
+        // console.log(json[1]);
+        setSuggestions(json[1]);
+        dispatch(
+            cacheResults({
+                [query]:json[1]
+            })
+        )
+    }
+
     
     const toogleHandler = ()=>{
         dispatch(toogleMenu());
@@ -19,6 +62,12 @@ const Header = () =>{
     const darkModeHandler = () => {
         setDark(!dark);
         document.body.classList.toggle("dark");
+    }
+
+    const searchHandle = (e) =>{
+        setQuery(e);
+        console.log(query);
+
     }
 
     return(
@@ -30,9 +79,26 @@ const Header = () =>{
             </div>
                
             <div className="col-span-10 px-10">
-                <input className="h-1/2 rounded-l-full w-1/2 m-3 mr-0 p-4" placeholder="What's in your mind?"></input>
-                <button className="h-1/2 w-16 rounded-r-full bg-gray-300 p-2">
-                   <img className="w-[5px]" src="https://w7.pngwing.com/pngs/403/380/png-transparent-computer-icons-youtube-symbol-information-black-dandelion-circle-symbol-magnifying-glass-thumbnail.png" alt="search"/>
+                <input className="h-1/2 rounded-l-full w-1/2 mt-5 mr-0 p-4" placeholder="What's in your mind?"
+                 onChange={(e)=> searchHandle(e.target.value)}
+                 onFocus={()=>setShowSuggestions(true)}
+                 onBlur={()=>setShowSuggestions(false)}></input>
+                {/* <div className="fixed flex flex-col list-none bg-sky-200 px-3 py-2 w-[420px] rounded-sm"> */}
+                    { 
+                    // But Never use index as a key
+                        showSuggestions && (suggestions.map((item, index)=>(
+                            <div key={index} className="fixed flex flex-col list-none bg-sky-200 px-3 py-2 w-[420px] rounded-sm">
+                                <ul>
+                                    <li className="py-1 border-b-[1px] shadow-md cursor-default hover:bg-slate-400" key={index}> 
+                                        <CiSearch className="inline-block pr-1"/> {item}
+                                    </li>
+                                </ul>
+                        </div>)))
+                    
+                    }
+                {/* </div> */}
+                <button className="h-1/2 w-12 rounded-r-full bg-gray-300 px-3 py-2">
+                   <CiSearch/>
                 </button>
             </div>
 
