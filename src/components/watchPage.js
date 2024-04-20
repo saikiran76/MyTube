@@ -16,7 +16,7 @@ const WatchPage = () =>{
     }, [])
     return(
         <div className="px-10 py-6 rounded-lg">
-            <div className="flex flex-wrap">
+            <div className="flex">
                 <div><iframe width="720" height="412" src={"https://www.youtube.com/watch?v=" + videoParam } title="YouTube video player" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" style={{borderRadius: "1em"}}></iframe></div>
                 <ChatSection/>
 

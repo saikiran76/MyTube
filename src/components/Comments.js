@@ -122,7 +122,7 @@ const Comment = ({data}) =>{
     const {user, comment, replies} = data;
     console.log(replies);
     return(
-        <div className="flex bg-gray-200 rounded-lg px-3 py-3 mb-2">
+        <div className="flex rounded-lg px-3 py-3 mb-2">
             <div className="w-[40px]">
                 <img className="rounded-full" src={acc} alt="account"/>
             </div>
@@ -158,7 +158,7 @@ const CommentsList = ({comments}) =>{
 
 const CommentContainer = () =>{
     return(
-        <div className="mt-2 bg-gray-50 px-4 py-4">
+        <div className="mt-2 border-gray-100 border-l border-r border-t border-b px-4 py-4 w-[45em]">
             <h1 className="mb-3 font-bold text-xl">Comments:</h1>
             <Comment data={CommentsData}/>
             <CommentsList comments={CommentsData}/>

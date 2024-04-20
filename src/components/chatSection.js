@@ -39,7 +39,7 @@ const ChatSection = () =>{
 
     return(
         <div>
-        <div className="bg-gray-100 h-[30em] w-[27em] rounded-md flex flex-col-reverse overflow-y-auto overflow-hidden">
+        <div className="bg-white h-[30em] w-[27em] rounded-md flex flex-col-reverse overflow-y-auto overflow-hidden">
 
                 {
                     items.map((item, index)=>(
@@ -58,10 +58,10 @@ const ChatSection = () =>{
                     profile:"https://banner2.cleanpng.com/20180604/cio/kisspng-user-profile-avatar-computer-icons-google-account-5b1571035447a7.6413663015281318433452.jpg"
                 }))
 
-                }} className="flex px-2 bg-gray-500 rounded-b-md py-2 items-center">
+                }} className="flex px-2 rounded-b-md py-2 items-center">
                 <input value={liveMessage}
                 onChange={(e)=>setLiveMessage(e.target.value)}
-                className="bg-gray-100 px-2 py-2 rounded-md border-gray-600 border-l border-r border-t border-b w-[20em]" placeholder="Chat"/>
+                className=" px-2 py-2 rounded-md border-gray-600 border-l border-r border-t border-b w-[20em]" placeholder="Chat"/>
                 <button onClick={()=>clickHandler()} className="bg-green-300 rounded-md w-[5em] h-[2em] ml-[0.5em] flex items-center">
                     <span className="mx-2"><VscSend/></span>
                 </button>
