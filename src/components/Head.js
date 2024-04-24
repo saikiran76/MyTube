@@ -78,7 +78,7 @@ const Header = () =>{
                 <img className="h-16 cursor-pointer" src="https://t3.ftcdn.net/jpg/04/03/98/64/360_F_403986499_hB7zfgOXezReA0sKkxl34RoT9TbNkbpH.jpg"  alt="Utube"/>
             </div>
                
-            <div className="col-span-10 px-10">
+            <div className="col-span-10 px-10 relative">
                 <input className="h-1/2 rounded-l-full w-1/2 mt-5 mr-0 p-4" placeholder="What's in your mind?"
                  onChange={(e)=> searchHandle(e.target.value)}
                  onFocus={()=>setShowSuggestions(true)}
@@ -87,7 +87,7 @@ const Header = () =>{
                     { 
                     // But Never use index as a key
                         showSuggestions && (suggestions.map((item, index)=>(
-                            <div key={index} className="fixed flex flex-col list-none bg-sky-200 px-3 py-2 w-[420px] rounded-sm">
+                            <div key={index} className="absolute z-18 flex flex-col  bg-sky-200 px-3 py-2 w-[420px] rounded-md">
                                 <ul>
                                     <li className="py-1 border-b-[1px] shadow-md cursor-default hover:bg-slate-400" key={index}> 
                                         <CiSearch className="inline-block pr-1"/> {item}

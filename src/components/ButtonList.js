@@ -3,7 +3,7 @@ import Button from './Button';
 
 const ButtonList = () => {
     return(
-    <div className='flex gap-1 my-2 text-white m-0'>
+    <div className='flex gap-1 my-1 text-white text-sm m-0 ml-10'>
         <Button />
         
     </div>
