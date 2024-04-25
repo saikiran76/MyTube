@@ -6,7 +6,7 @@
     text-decoration-line: underline
   }
 
-  @layer utilities {
+@layer utilities {
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar {
         /* Hide scrollbar for Chrome, Safari and Opera */
