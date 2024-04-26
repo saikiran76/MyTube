@@ -39,7 +39,7 @@ const ChatSection = () =>{
 
     return(
         <div>
-        <div className="bg-white h-[30em] w-[27em] rounded-md flex flex-col-reverse overflow-y-auto overflow-hidden">
+        <div className="bg-white h-[30em] w-[26em] rounded-md flex flex-col-reverse overflow-y-auto overflow-hidden">
 
                 {
                     items.map((item, index)=>(
