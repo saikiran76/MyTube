@@ -39,7 +39,7 @@ const ChatSection = () =>{
 
     return(
         <div>
-        <div className="bg-white h-[30em] w-[26em] rounded-md flex flex-col-reverse overflow-y-auto overflow-hidden">
+        <div className="bg-white h-[30em] w-[26em] rounded-md flex flex-col-reverse overflow-y-auto overflow-hidden border-gray-300 border-l border-r border-t border-b">
 
                 {
                     items.map((item, index)=>(
@@ -49,7 +49,7 @@ const ChatSection = () =>{
 
         </div>
 
-        <form onSubmit={
+        <form className="border-gray-300 border-l border-r border-b" onSubmit={
             (e)=>{
                 e.preventDefault()
                 dispatch(addMessage({

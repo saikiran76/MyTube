@@ -9,9 +9,9 @@ import { Outlet } from "react-router-dom";
 const Body = () =>{
     // const isMenuOpen = useSelector((state)=>  state.isMenuOpen);
     return(
-        <div className="flex">
-            <SideBar/>
-            <Outlet/>
+        <div className="flex relative">
+            <div className="absolute left-1 z-30"><SideBar/></div>
+            <div className="z-20"><Outlet/></div>
         </div>
        
     )
