@@ -16,9 +16,9 @@ const WatchPage = () =>{
         dispatch(closeMenu());
     }, [])
     return(
-        <div className="px-8 py-6 w-full">
+        <div className="px-8 py-6 overflow-hidden">
             <div className="flex flex-col md:flex-row gap-4">
-            <div className="w-full h-[250px] md:h-[24em] md:w-[720px] aspect-w-16 aspect-h-9">
+            <div className="h-[250px] md:h-[24em] md:w-[720px] aspect-w-16 aspect-h-9">
                 <iframe
                     className="w-full h-full"
                     src={"https://www.youtube.com/embed/" + videoParam}

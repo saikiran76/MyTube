@@ -14,7 +14,6 @@ import { CiSearch } from "react-icons/ci";
 
 
 const Header = () =>{
-    const [dark, setDark] = React.useState(false);
     const [query, setQuery] = useState("");
     const [suggestions, setSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -58,13 +57,11 @@ const Header = () =>{
 
     
     const toogleHandler = ()=>{
-        dispatch(toogleMenu());
+        setTimeout(() => {
+            dispatch(toogleMenu());
+          }, 100);
     }
 
-    const darkModeHandler = () => {
-        setDark(!dark);
-        document.body.classList.toggle("dark");
-    }
 
     const searchHandle = (e) =>{
         setQuery(e);
@@ -73,7 +70,7 @@ const Header = () =>{
     }
 
     return(
-        <div className="grid grid-flow-col shadow-lg items-center">
+        <div className="grid grid-flow-col shadow-lg items-center w-screen">
             <div className="flex items-center">
                 <img onClick={()=>toogleHandler()} className="h-16 bg-transparent cursor-pointer" src="https://rueeazy.github.io/youtube-clone/Assets/hamburger-icon.png" alt="Ham"/>
 
@@ -100,26 +97,17 @@ const Header = () =>{
                         </div>)))
                     
                     }
-                {/* </div> */}
+                
                 <button className="h-1/2 w-12 rounded-r-full bg-gray-300 px-3 py-2 hidden md:block">
                    <CiSearch/>
                 </button>
-            </div>
 
-            {/* <button onClick={()=> darkModeHandler()}>
-                    {
-                        
-                        dark && <IoSunny /> // render sunny when dark is true
-                    }
-                    {
-                        !dark && <IoMoon /> // render moon when dark is false
-                    }
-            </button> */}
+            </div>
 
             <button className="h-1/2 w-12 px-3 py-2 block md:hidden">
                    <CiSearch/>
-                </button>
-
+            </button>
+            
             <img className="w-8 col-span-1 m-4 cursor-pointer" src="https://e7.pngegg.com/pngimages/802/786/png-clipart-google-account-google-search-customer-service-google-logo-login-button-blue-sphere-thumbnail.png" alt="user"/>
 
         </div>

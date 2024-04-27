@@ -14,7 +14,7 @@ const SideBar = () =>{
     const isMenuOpen = useSelector(state => state.app.isMenuOpen);
     if(!isMenuOpen) return null;
     return(
-        <div className="flex flex-col w-56 p-4 shadow-lg text-black absolute bg-white h-screen">
+        <div className={`flex flex-col w-56 p-4 shadow-lg text-black absolute bg-white h-screen transition-transform transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`} style={{ transitionTimingFunction: 'ease-in-out' }}>
             <ul>
                 <li className="flex items-center gap-2 p-2 cursor-pointer hover:bg-gray-300 w-[12em]"><BiHomeAlt /> Home </li>
                 <li className="flex items-center gap-2 p-2 cursor-pointer hover:bg-gray-300 w-[12em]"><SiYoutubeshorts />Shorts</li>

@@ -49,7 +49,7 @@ const ChatSection = () =>{
 
         </div>
 
-        <form className="border-gray-300 border-l border-r border-b" onSubmit={
+        <form onSubmit={
             (e)=>{
                 e.preventDefault()
                 dispatch(addMessage({
@@ -58,7 +58,7 @@ const ChatSection = () =>{
                     profile:"https://banner2.cleanpng.com/20180604/cio/kisspng-user-profile-avatar-computer-icons-google-account-5b1571035447a7.6413663015281318433452.jpg"
                 }))
 
-                }} className="flex px-2 rounded-b-md py-2 items-center">
+                }} className="flex px-2 rounded-b-md py-2 items-center border-gray-300 border-l">
                 <input value={liveMessage}
                 onChange={(e)=>setLiveMessage(e.target.value)}
                 className=" px-2 py-2 rounded-md border-gray-600 border-l border-r border-t border-b w-[20em]" placeholder="Chat"/>
